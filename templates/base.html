@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base HTML para o projeto!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename= imagens/logo.png) }}"
+             alt="Logo do projeto">
+        <h2>GreenPlace</h2>
+        <button>Início</button>
+        <button>Contato</button>
+
+    </header>
+    <main>
+        {% block content %}
+        <!-- O conteúdo das outras páginas vai aparecer aqui -->
+        {% endblock %}
+    </main>
+    <footer>
+        <h3>Todos os direitos reservados!</h3>
+    </footer>
+</body>
+</html>
