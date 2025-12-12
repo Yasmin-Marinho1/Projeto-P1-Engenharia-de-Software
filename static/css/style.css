@@ -1,0 +1,144 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    background-color: #f0f0f0;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 250px auto 250px;
+    background-color: #2b5b18;
+    align-items: center;
+    justify-items: center;
+    color: white;
+    z-index: -2;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #2b5b18;
+  height: 10%;
+  color: white;
+}
+
+.logo {
+    width: 75%;
+    border-radius: 999px;
+    padding: 15px;
+    justify-self: left;
+}
+
+header h2 {
+    font-size: 40px;
+    padding: 15px;
+    justify-self: center;
+}
+
+/* Ícone hamburger */
+.menu-hamburger {
+    justify-self: right;
+    z-index: 4;
+    padding: 20px;
+    align-self: flex-start;
+    
+}
+
+#menu-toggle {
+    display: none;
+}
+
+.menu-icon {
+    width: 50px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 5;
+    cursor: pointer;
+}
+
+.linha {
+    width: 45px;
+    height: 4px;
+    background-color: #f0f0f0;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Estilos do overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 75%;
+    left: 70%;
+    width: 30%;
+    height: 35%;
+    background-color: rgba(0, 0, 0, .45);
+    z-index: -1;
+    transform: scale(0);
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Estilos do menu navegação */
+.menu-navegacao {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 50%;
+    justify-content: center;
+    
+}
+
+.menu-navegacao ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.menu-navegacao ul li {
+    margin: 20px 0;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+}
+
+.menu-navegacao ul li a {
+    color: #2b5b18;
+    text-decoration: none;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.menu-navegacao ul li a:hover {
+    color: #499731;
+}
+
+/* Animação */
+#menu-toggle:checked + .menu-icon .linha:nth-child(1) {
+    transform: rotate(45deg) translate(13px, 13px);
+}
+
+#menu-toggle:checked + .menu-icon .linha:nth-child(2) {
+    opacity: 0;
+}
+#menu-toggle:checked + .menu-icon .linha:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+#menu-toggle:checked ~ .overlay {
+    transform: scale(1);
+}
+/* Conteúdo */
+main {
+    text-align: center;
+    z-index: 1;
+    padding-bottom: 100px;
+}

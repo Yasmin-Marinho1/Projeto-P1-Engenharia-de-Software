@@ -8,12 +8,56 @@
 </head>
 <body>
     <header>
-        <img src="../static/imagens/logo.png"
+        <img class="logo" src="../static/imagens/logo.png"
              alt="Logo do projeto">
         <h2>GreenPlace</h2>
-        <button>Início</button>
-        <button>Contato</button>
-
+        <div class="menu-hamburger">
+            <!-- Checkbox - checado = menu aberto, se não, menu fechado-->
+             <input type="checkbox" id="menu-toggle" />
+             <label for="menu-toggle" class="menu-icon">
+                <div class="linha"></div>
+                <div class="linha"></div>
+                <div class="linha"></div>
+             </label>
+             <div class="overlay">
+                <nav class="menu-navegacao">
+                    {% if session['user_role'] == 'user' %}
+                        <ul>
+                            <li>
+                                <a href="{{ url_for('index') }}">Página inicial</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('formulario') }}">Formulário</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('logout') }}">Sair</a>
+                            </li>
+                        </ul>
+                    {% elif session['user_role'] == 'empresa' %}
+                        <ul>
+                            <li>
+                                <a href="{{ url_for('index') }}">Página inicial</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('pagina-empresas') }}">Empresas</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('logout') }}">Sair</a>
+                            </li>
+                        </ul>
+                    {% else %}
+                        <ul>
+                            <li>
+                                <a href="{{ url_for('cadastro') }}">Cadastre-se</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('login') }}">Login</a>
+                            </li>
+                        </ul>
+                    {% endif %}
+                </nav>
+            </div>
+        </div>
     </header>
     <main>
         {% block content %}
