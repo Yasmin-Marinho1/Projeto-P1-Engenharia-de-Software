@@ -1,5 +1,5 @@
 function alterarCampos() {
-    // Ocultar campos dependendo do perfil de usuário
+    // Ocultar campos dependendo do seu perfil de usuário
     const user_radio = document.getElementById('user');
     const empresa_radio = document.getElementById('empresa');
     const campo1 = document.getElementById('campo1');
@@ -12,4 +12,9 @@ function alterarCampos() {
         campo2.style.display = 'block';
         campo1.style.display = 'none';
     }
+    else {
+        campo1.style.display ='none';
+        campo2.style.display ='none';
+    }
 }
+alterarCampos();
