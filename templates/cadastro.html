@@ -1,34 +1,45 @@
 {% extends "base.html" %}
 
-{% block title %}Página de Login - GreenPlace{% endblock %}
+{% block title %}Página de Cadastro - GreenPlace{% endblock %}
 {% block content %}
+
 <div class="form-box">
-    <h1>Login</h1>
-    <form action="/login" method="post">
+    <h1>Cadastro</h1>
+    <form action="{{ url_for('cadastro') }}" method="POST" onsubmit="return validarDoisNomes(this)">
         <div class="form-group">
             <label for="perfil" id="pefil">Qual o seu perfil?</label>
             <label for="user"><input type="radio" name="perfil" id="user" value="user" onclick="alterarCampos()" required>Usuário comum</label>
             <label for="empresa"><input type="radio" name="perfil" id="empresa" value="empresa" onclick="alterarCampos()">Empresa</label>
         </div>
         <!-- Campos exibidos ou ocultados -->
+
         <div class="form-group">
             <div class="campos-ocultos" id="campo_usuario">
                 <label for="cpf" id="cpf">CPF</label>
                 <input type="text" name="cpf" pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}" placeholder="Digite seu CPF" required>
+                <label for="nome" id="nome">Nome completo</label>
+                <input type="text" name="nome" required minlength="3">
             </div>
         </div>
         <div class="form-group">
             <div class="campos-ocultos" id="campo_empresa">
                 <label for="cnpj" id="cnpj">CNPJ</label>
                 <input type="text" name="cnpj" pattern="[0-9]{2}.[0-9]{3}.[0-9]{3}/[0-9]{4}-[0-9]{2}" placeholder="Digite seu CNPJ" required>
+                <label for="nome_empresa" id="nome_empresa">Nome da Empresa</label>
+                <input type="text" name="nome_empresa" required minlength="3">
             </div>
         </div>
+
         <!-- Campo que será sempre exibido -->
+
         <div class="form-group">
             <label for="senha" id="senha">Senha</label>
             <input type="password" name="senha" pattern="[0-9]{8}" title="Por favor, insira exatamente 8 dígitos numéricos." placeholder="Digite sua senha" required>
         </div>
-        <button type="submit">Login</button>
-    </form>
+        <button type="submit">Finalize o cadastro</button>
+
 </div>
+
+
+
 {% endblock %}

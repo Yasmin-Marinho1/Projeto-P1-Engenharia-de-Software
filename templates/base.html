@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
+
+    
+<!-- Exibir mensagens flash -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+
     <header>
         <img class="logo" src="../static/imagens/logo.png"
              alt="Logo do projeto">
@@ -47,6 +59,9 @@
                         </ul>
                     {% else %}
                         <ul>
+                            <li>
+                                <a href="{{ url_for('index') }}">Página inicial</a>
+                            </li>
                             <li>
                                 <a href="{{ url_for('cadastro') }}">Cadastre-se</a>
                             </li>
