@@ -56,7 +56,7 @@ function validarDoisNomes(form) {
     // Se não tiver dois nomes
     if (nomes.length < 2) {
         // Exibe mensagem pedindo nome completo
-        inputNome.setCustomValidity('Por favor, insira pelo o seu nome completo.');
+        inputNome.setCustomValidity('Por favor, insira o seu nome completo.');
         // Não envia o formulário
         return false; 
 

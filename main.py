@@ -35,7 +35,7 @@ def login():
     """
     if request.method == 'GET':
         # Caso já esteja logado
-        if session['user_role'] == 'user' or session['user_role'] == 'empresa':
+        if 'user_role' in session:
             return redirect(url_for('index'))
         else:
             return render_template('login.html')
@@ -56,7 +56,8 @@ def login():
                     if linha.get('cnpj') == cnpj:
                         # Verifica se a senha corresponde e, se sim, procede login
                         if linha.get('senha') == senha:
-                            flash(f'Login bem sucedido, bem vinda, {linha.get('nome')}!', 'success')
+                            username = linha.get('nome')
+                            flash(f'Login bem sucedido, bem vindo(a) {username}!', 'success')
                             session['user_role'] = 'empresa'
                             return redirect(url_for('index'))
                         else:
@@ -74,13 +75,15 @@ def login():
                     if linha.get('cpf') == cpf:
                         # Verifica se a senha corresponde e, se sim, procede login
                         if linha.get('senha') == senha:
-                            flash(f'Login bem sucedido, bem vindo(a), {linha.get('nome')}!', 'success')
+                            username = linha.get('nome')
+                            flash(f'Login bem sucedido, bem vindo(a) {username}!', 'success')
                             session['user_role'] = 'user'
                             return redirect(url_for('index'))
                         else:
                             break
                 # Caso não ache ou senha não corresponda, exibe mensagem de erro
                 flash('CPF ou senha incorretos.', 'error')
+                return redirect(url_for('login'))
         else:
             flash('Digite um CPF/CNPJ válido', 'error')
 

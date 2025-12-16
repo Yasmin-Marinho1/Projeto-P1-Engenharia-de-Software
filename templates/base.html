@@ -13,7 +13,11 @@
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
         {% for category, message in messages %}
-          <div class="{{ category }}">{{ message }}</div>
+          <div class="flash" role="alert">
+            <span class="mensagem_flask">{{ message }}</span>
+            <button type="button" class="botao-flash" onclick="this.parentElement.style.display='none'" aria-label="Fechar">X</button>
+        </div>
+
         {% endfor %}
       {% endif %}
     {% endwith %}
