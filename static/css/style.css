@@ -429,6 +429,9 @@ button:hover {
         margin: 32px auto;
         max-width: 1370px;
     }
+    .info-site .info-principal ~ p {
+        padding: 0 120px;
+    }
     .info-site h3 {
         font-size: 2.2em;
         margin: 20px 2px;
