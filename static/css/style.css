@@ -384,6 +384,9 @@ button:hover {
 }
 
 @media (min-width: 1024px) {
+    body {
+        min-height: 150vh;
+    }
     header h2 {
         font-size: 4rem;
     }
@@ -400,10 +403,11 @@ button:hover {
         font-size: 1.8rem;
     }
     .overlay {
-        bottom: 70%;
+        bottom: 65%;
         left: 80%;
         width: 20%;
-        height: 30%;
+        height: 35%;
+        min-height: 200px;
         transform: translateX(100%);
     }
     .flash{
@@ -430,8 +434,8 @@ button:hover {
         margin: 20px 2px;
     }
     .menu-navegacao {
-        margin-top: 10%;
-        margin-right: 5%;
+        margin-top: 5px;
+        margin-right: 8px;
     }
     .info-site h3 {
         font-size: 2.5em;
