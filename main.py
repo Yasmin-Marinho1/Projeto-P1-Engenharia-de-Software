@@ -43,11 +43,12 @@ def cadastro():
         """
         Vai abrir o arquivo em modo de append, 'a', em que ele  vai fazer alterações sem apagar o que já existe
         """
+        campos = ['cpf', 'nome','cnpj','nome_empresa','senha']
         with open(cadastro_file, mode='a',  encoding='utf-8', newline='') as arquivo_csv:
-            escrever = csv.DictWriter(arquivo_csv, fieldnames=['perfil','cpf','nome','cnpj','nome_empresa','senha'])
+            escrever = csv.DictWriter(arquivo_csv, fieldnames=campos)
+            escrever.writeheader()
             # Explicitamente extrai os dados para garantir a ordem e evitar campos extras indesejados
             dados_usuario = {
-                'perfil': request.form.get('perfil'),
                 'cpf': request.form.get('cpf', ''),
                 'nome': request.form.get('nome', ''),
                 'cnpj': request.form.get('cnpj', ''),

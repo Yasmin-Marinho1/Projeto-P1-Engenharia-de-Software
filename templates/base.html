@@ -43,10 +43,10 @@
                                 <a href="{{ url_for('index') }}">Página inicial</a>
                             </li>
                             <li>
-                                <a href="{{ url_for('formulario') }}">Formulário</a>
+                                <a href="{{ url_for('user.formulario') }}">Formulário</a>
                             </li>
                             <li>
-                                <a href="{{ url_for('logout_user') }}">Sair</a>
+                                <a href="{{ url_for('user.logout_usuario') }}">Sair</a>
                             </li>
                         </ul>
                     {% elif session['user_role'] == 'empresa' %}
@@ -55,10 +55,10 @@
                                 <a href="{{ url_for('index') }}">Página inicial</a>
                             </li>
                             <li>
-                                <a href="{{ url_for('pagina-empresas') }}">Empresas</a>
+                                <a href="{{ url_for('empresa.dados') }}">Empresas</a>
                             </li>
                             <li>
-                                <a href="{{ url_for('logout_empresa') }}">Sair</a>
+                                <a href="{{ url_for('empresa.logout_empresa') }}">Sair</a>
                             </li>
                         </ul>
                     {% else %}
