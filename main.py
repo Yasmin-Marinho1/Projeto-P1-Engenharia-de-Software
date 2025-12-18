@@ -45,8 +45,16 @@ def cadastro():
         """
         with open(cadastro_file, mode='a',  encoding='utf-8', newline='') as arquivo_csv:
             escrever = csv.DictWriter(arquivo_csv, fieldnames=['perfil','cpf','nome','cnpj','nome_empresa','senha'])
-            # O request.form já tem as colunas nomeadas corretamente
-            escrever.writerow(request.form.to_dict())
+            # Explicitamente extrai os dados para garantir a ordem e evitar campos extras indesejados
+            dados_usuario = {
+                'perfil': request.form.get('perfil'),
+                'cpf': request.form.get('cpf', ''),
+                'nome': request.form.get('nome', ''),
+                'cnpj': request.form.get('cnpj', ''),
+                'nome_empresa': request.form.get('nome_empresa', ''),
+                'senha': request.form.get('senha')
+            }
+            escrever.writerow(dados_usuario)
         flash('Cadastro realizado com sucesso! Faça seu  login', 'success')
         return redirect(url_for('login'))
     
@@ -69,9 +77,9 @@ def login():
         cnpj = request.form.get('cnpj')
         senha =  request.form.get('senha')
         
-        # Quando enviar o form como usuário empresa
-        if cpf == None and cnpj != None:
-            with open('data/cadastro_dos_usuarios.csv', mode='r', encoding='utf-8') as arquivo_csv:
+        # Quando enviar o form como usuário empresa (CNPJ preenchido, CPF vazio)
+        if not cpf and cnpj:
+            with open(cadastro_file, mode='r', encoding='utf-8') as arquivo_csv:
                 # Armazena os dados em um dicionário
                 leitor = csv.DictReader(arquivo_csv)
 
@@ -81,18 +89,18 @@ def login():
                     if linha.get('cnpj') == cnpj:
                         # Verifica se a senha corresponde e, se sim, procede login
                         if linha.get('senha') == senha:
-                            username = linha.get('nome')
+                            username = linha.get('nome_empresa') or linha.get('nome')
                             flash(f'Login bem sucedido, bem vindo(a) {username}!', 'success')
                             session['user_role'] = 'empresa'
                             return redirect(url_for('index'))
                         else:
                             break
-                # Caso não ache ou senha não corresponda, exibe mensagem de erro
-                flash('CNPJ ou senha incorretos.', 'error')
+            # Caso não ache ou senha não corresponda, exibe mensagem de erro
+            flash('CNPJ ou senha incorretos.', 'error')
 
-        # Quando enviar o form como usuário comum
-        elif cpf != None and cnpj == None:
-            with open('data/cadastro_dos_usuarios.csv', mode='r', encoding='utf-8') as arquivo_csv:
+        # Quando enviar o form como usuário comum (CPF preenchido, CNPJ vazio)
+        elif cpf and not cnpj:
+            with open(cadastro_file, mode='r', encoding='utf-8') as arquivo_csv:
                 # Armazena os dados em um dicionário
                 leitor = csv.DictReader(arquivo_csv)
                 for linha in leitor:
