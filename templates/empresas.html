@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Página de empresas - Greenplace{% endblock %}
+
+{% block content %}
+<section class="info-geral">
+    <div class="info-principal">
+        <h3>Painel de Monitoramento para empresas</h3>
+        <p>Seja bem-vindo(a) ao painel de monitoramento para empresas. Aqui você pode visualizar
+            os dados de seus clientes e a quantidade de carbono emitida por eles.
+        </p>
+    </div>
+    <div class="tabela-container">
+        <table class="tabela-dados">
+            <thead>
+                <tr>
+                    <th>Usuário</th>
+                    <th>Data de resposta</th>
+                    <th>Quantidade de Emissão</th>
+                    <th>Pontuação</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {# A lógica será usada quando passar os dados via Flask
+                talvez até dê pra tirar esse comentário dps #}
+                {% if respostas %}
+                {% for resposta in respostas %}
+                <tr>
+                    <td>{{ resposta.usuario }}</td>
+                    <td>{{ resposta.data_resposta }}</td>
+                    <td>{{ resposta.quantidade_emissao }}</td>
+                    <td>{{ resposta.pontuacao }}</td>
+                    <td>
+                        <a href="{{ url_for('empresa.editar', id=resposta.id) }}">Editar</a>
+                        <a href="{{ url_for('empresa.excluir', id=resposta.id) }}">Excluir</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="5" class="tabela-vazia">Nenhuma resposta encontrada</td>
+                </tr>
+                {% endif %}
+
+            </tbody>
+        </table>
+    </div>
+    <div class="acoes-empresas">
+        <a href="{{ url_for('empresa.baixar_dados') }}" class="botao-flash">
+            Gerar Relatório Geral (PDF)
+        </a>
+    </div>
+</section>
+{% endblock %}
