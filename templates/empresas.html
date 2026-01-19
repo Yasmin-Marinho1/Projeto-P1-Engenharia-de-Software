@@ -18,7 +18,6 @@
                     <th>Data de resposta</th>
                     <th>Quantidade de Emissão</th>
                     <th>Pontuação</th>
-                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,14 +30,10 @@
                     <td>{{ resposta.data_resposta }}</td>
                     <td>{{ resposta.quantidade_emissao }}</td>
                     <td>{{ resposta.pontuacao }}</td>
-                    <td>
-                        <a href="{{ url_for('empresa.editar', id=resposta.id) }}">Editar</a>
-                        <a href="{{ url_for('empresa.excluir', id=resposta.id) }}">Excluir</a>
-                    </td>
                 </tr>
                 {% endfor %}
                 {% else %}
-                <tr>
+                <tr class="tabela-vazia">
                     <td colspan="5" class="tabela-vazia">Nenhuma resposta encontrada</td>
                 </tr>
                 {% endif %}
