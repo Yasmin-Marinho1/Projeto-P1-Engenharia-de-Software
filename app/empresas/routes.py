@@ -4,9 +4,13 @@ from . import empresa_bp
 @empresa_bp.route('/dados')
 def dados():
     """
-    lógica da página de dados
+    Rota GET da página de dados
     """
-    return "dados"
+    if session.get('user_role') == 'empresa':
+        return render_template('empresas.html')
+    else:
+        flash('Por favor, faça o login como empresa para prosseguir.')
+        return redirect(url_for('index'))
 
 @empresa_bp.route('/logout')
 def logout_empresa():
