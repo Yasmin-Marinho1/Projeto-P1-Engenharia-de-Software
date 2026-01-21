@@ -51,7 +51,7 @@ function validarDoisNomes(form) {
     const valorNome = inputNome.value.trim();
     
     // Divide a string por espaços e retira espaços duplos
-    const nomes = valorNome.split(/\s+/);
+    const nomes = valorNome.split;
     
     // Se não tiver dois nomes
     if (nomes.length < 2) {
