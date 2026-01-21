@@ -343,7 +343,7 @@ button:hover {
 }
 .tabela-container {
     overflow-x: auto;
-    max-width: 666px;
+    max-width: 780px;
     margin: 40px auto;
 }
 .tabela-dados {
@@ -358,23 +358,24 @@ th {
     color: white;
     padding: 8px;
     border: 1px solid #248f24;
+    font-size: 1.4rem;
 }
 td {
     text-align: center;
     padding: 10px;
     border: 1px solid rgb(224, 224, 224);
+    font-size: 1.4rem;
 }
 tr:nth-child(even) {
     background-color: rgb(217, 250, 198);
 }
 td:nth-child(3) {
     color: rgb(122, 122, 122);
-    font-size: 1.6rem;
     font-weight: bold;
 }
 .tabela-vazia {
     text-transform: uppercase;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     background-color: rgb(217, 250, 198);
     font-weight: bold;
 }
@@ -425,6 +426,9 @@ td:nth-child(3) {
         width: 75%;
         max-width: 600px;
         padding: 3rem;
+    }
+    .tabela-vazia, th, td {
+        font-size: 1.6rem;
     }
 }
 
@@ -504,6 +508,12 @@ td:nth-child(3) {
     .form-box {
         max-width: 600px;
         padding: 3rem;
+    }
+    .tabela-vazia, th, td {
+        font-size: 1.6rem;
+    }
+    .tabela-container {
+        max-width: 890px;
     }
 }
 @media (max-width: 260px) {
