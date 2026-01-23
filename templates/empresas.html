@@ -14,9 +14,9 @@
         <table class="tabela-dados">
             <thead>
                 <tr>
-                    <th>Usuário</th>
                     <th>Data de Resposta</th>
-                    <th>Emissão</th>
+                    <th>Usuário</th>
+                    <th>Emissão de Carbono</th>
                     <th>Pontuação</th>
                 </tr>
             </thead>
@@ -26,10 +26,10 @@
                 {% if respostas %}
                 {% for resposta in respostas %}
                 <tr>
-                    <td>{{ resposta.usuario }}</td>
                     <td>{{ resposta.data_resposta }}</td>
-                    <td>{{ resposta.quantidade_emissao }}</td>
-                    <td>{{ resposta.pontuacao }}</td>
+                    <td>{{ resposta.usuario }}</td> <!-- faixa etária -->
+                    <td>{{ resposta.quantidade_emissao }} Kg</td>
+                    <td>{{ resposta.pontuacao }}%</td>
                 </tr>
                 {% endfor %}
                 {% else %}
