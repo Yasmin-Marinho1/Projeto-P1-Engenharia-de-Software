@@ -119,14 +119,15 @@ header h2 {
     margin: 20px 0;
     background-color: #f0f0f0;
     border-radius: 15px;
-    padding: 10px;
+    padding: 0px;
 }
 
 .menu-navegacao ul li a {
+    display: block;
     color: #248f24;
     text-decoration: none;
     font-size: 1.5rem;
-    padding: 5px;
+    padding: 15px;
 }
 
 .menu-navegacao ul li:hover {
@@ -455,10 +456,11 @@ td:nth-child(3) {
     }
     .overlay {
         bottom: 65%;
-        left: 80%;
-        width: 20%;
-        height: 25%;
-        max-height: fit-content;
+        left: 75%;
+        width: 25%;
+        height: 35%;
+        min-height: 220px;
+        max-height: 250px;
         transform: translateX(100%);
     }
     .flash{
