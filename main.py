@@ -69,7 +69,7 @@ def cadastro():
                             
         # Se não estiver cadastrado, abre como 'append' e adiciona as informações
         campos = ['cpf', 'nome','cnpj','nome_empresa','senha']
-        with open(cadastro_file, mode='a',  encoding='utf-8') as arquivo_csv:
+        with open(cadastro_file, mode='a',  encoding='utf-8', newline='') as arquivo_csv:
             escrever = csv.DictWriter(arquivo_csv, fieldnames=campos, delimiter=';')
             # Explicitamente extrai os dados para garantir a ordem e evitar campos extras indesejados
             dados_usuario = {
