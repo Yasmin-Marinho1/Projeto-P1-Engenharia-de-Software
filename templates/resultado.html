@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Página de Resultado{% endblock %}
+{% block content %}
+<div class="resultado">
+    <h1>Resultado de {{ username }}!</h1>
+    <h2>{{ resposta.pontuacao }}%</h2>
+    <h3>Quantidade de emissão de carbono: {{ resposta.quantidade_emissao }}Kg</h3>
+    {% if resposta.pontuacao < 40 %}
+        <p>Infelizmente, seu desempenho está abaixo do ideal. Porém, é possível melhorar suas práticas sustentáveis!</p>
+    {% elif resposta.pontuacao < 70 %}
+        <p>Sua pontuação ainda não está adequada. Porém, mudando os seus hábitos aos poucos, é possível ajudar o meio ambiente!</p>
+    {% elif resposta.pontuacao < 90 %}
+        <p>Ótimo! Você está no caminho certo para um mundo mais sustentável!</p>
+    {% else %}
+        <p>Parabéns! Você obteve um excelente desempenho, continue assim para um mundo melhor!</p>
+    {% endif %}
+</div>
+{% endblock %}
