@@ -3,9 +3,13 @@
 {% block title %}Página de Resultado{% endblock %}
 {% block content %}
 <div class="resultado">
-    <h1>Resultado</h1>
+    
+    <!-- {{ username }} foi usado para exibir o nome do usuário passado pelo Flask -->
+    <h1>Resultado de {{ username }}</h1>
     <h2>{{ resposta.pontuacao }}%</h2>
     <h3>Quantidade de emissão de carbono: {{ resposta.quantidade_emissao }} Kg</h3>
+
+    <!-- Lógica para exibir a frase conforme o resultado do formulário -->
     {% if resposta.pontuacao < 40 %}
         <p>Infelizmente, seu desempenho está abaixo do ideal. Porém, é possível melhorar suas práticas sustentáveis!</p>
     {% elif resposta.pontuacao < 70 %}
