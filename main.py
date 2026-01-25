@@ -1,12 +1,16 @@
 from flask import Flask, url_for, session, flash, render_template, redirect, request
 import csv
 import os
+from dotenv import load_dotenv
+
+# Carrega as variáveis do .env
+load_dotenv()
 
 # Inicializa aa aplicação Flask
 app = Flask(__name__)
 
-# Chave secreta de sessões
-app.secret_key = 'chave-secreta-aqui'
+# Busca a chave do ambiente, com um valor padrão caso não encontre
+app.secret_key = os.environ.get('SECRET_KEY', 'dev-key-padrao')
 
 # Caminho para arquivos de dados
 data_dir =  'data'
