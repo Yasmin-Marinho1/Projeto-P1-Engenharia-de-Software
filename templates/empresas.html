@@ -3,7 +3,7 @@
 {% block title %}Página de empresas - Greenplace{% endblock %}
 
 {% block content %}
-<section class="info-geral">
+<section class="info-empresa">
     <div class="info-principal">
         <h3>Painel de Monitoramento para empresas</h3>
         <p>Seja bem-vindo(a) ao painel de monitoramento para empresas. Aqui você pode visualizar
@@ -42,7 +42,7 @@
         </table>
     </div>
     <div class="acoes-empresas">
-        <a href="{{ url_for('empresa.baixar_dados') }}" class="botao-flash">
+        <a href="{{ url_for('empresa.baixar_dados') }}" class="botao-download">
             Gerar Relatório Geral (PDF)
         </a>
     </div>
