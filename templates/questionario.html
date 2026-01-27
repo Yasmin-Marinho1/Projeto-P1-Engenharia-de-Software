@@ -3,98 +3,215 @@
 {% block title %}Questionário - GreenPlace{% endblock %}
 {% block content %}
 <div class="form-container">
+
+  <p class="aviso-dados">As respostas deste formulário podem ser utilizadas de forma consolidada por empresas e instituições para fins de pesquisa e estudos relacionados à sustentabilidade. Nenhum dado sensível ou informação pessoal será compartilhado.</p>
+
   <h1>Questionário Ambiental</h1>
   <p>Responda às perguntas abaixo de acordo com seus hábitos do dia a dia.</p>
 
   <form method="POST" action="{{ url_for('user.questionario') }}">
 
+    <!-- DADOS PESSOAIS -->
+    <fieldset>
+      <legend>Dados pessoais</legend>
+
+      <p>Faixa etária:</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="idade" value="menos_18" required> Menos de 18 anos</label>
+      <label><input type="radio" name="idade" value="18_24"> 18 a 24 anos</label>
+      <label><input type="radio" name="idade" value="25_34"> 25 a 34 anos</label>
+      <label><input type="radio" name="idade" value="35_44"> 35 a 44 anos</label>
+      <label><input type="radio" name="idade" value="45_54"> 45 a 54 anos</label>
+      <label><input type="radio" name="idade" value="55_mais"> 55 anos ou mais</label>
+      <label><input type="radio" name="idade" value="nao_responder"> Prefiro não responder</label>
+
+      <p>Gênero:</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="genero" value="feminino" required> Feminino</label>
+      <label><input type="radio" name="genero" value="masculino"> Masculino</label>
+      <label><input type="radio" name="genero" value="outro"> Outro</label>
+      <label><input type="radio" name="genero" value="nao_responder"> Prefiro não responder</label>
+
+      <label for="estado">Estado onde mora:</label> <p class="asterisco">*</p>
+      <select name="estado" id="estado" required>
+        <option value="" disabled selected hidden>Selecione</option>
+        <option value="nao_responder">Prefiro não responder</option>
+        <option value="AC">Acre</option>
+        <option value="AL">Alagoas</option>
+        <option value="AP">Amapá</option>
+        <option value="AM">Amazonas</option>
+        <option value="BA">Bahia</option>
+        <option value="CE">Ceará</option>
+        <option value="DF">Distrito Federal</option>
+        <option value="ES">Espírito Santo</option>
+        <option value="GO">Goiás</option>
+        <option value="MA">Maranhão</option>
+        <option value="MT">Mato Grosso</option>
+        <option value="MS">Mato Grosso do Sul</option>
+        <option value="MG">Minas Gerais</option>
+        <option value="PA">Pará</option>
+        <option value="PB">Paraíba</option>
+        <option value="PR">Paraná</option>
+        <option value="PE">Pernambuco</option>
+        <option value="PI">Piauí</option>
+        <option value="RJ">Rio de Janeiro</option>
+        <option value="RN">Rio Grande do Norte</option>
+        <option value="RS">Rio Grande do Sul</option>
+        <option value="RO">Rondônia</option>
+        <option value="RR">Roraima</option>
+        <option value="SC">Santa Catarina</option>
+        <option value="SP">São Paulo</option>
+        <option value="SE">Sergipe</option>
+        <option value="TO">Tocantins</option>
+      </select>
+
+      <p>Renda mensal (faixa):</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="renda" value="ate_1_sm" required> Até 1 salário mínimo</label>
+      <label><input type="radio" name="renda" value="1_3_sm"> De 1 a 3 salários mínimos</label>
+      <label><input type="radio" name="renda" value="3_5_sm"> De 3 a 5 salários mínimos</label>
+      <label><input type="radio" name="renda" value="mais_5_sm"> Mais de 5 salários mínimos</label>
+      <label><input type="radio" name="renda" value="nao_responder"> Prefiro não responder</label>
+    </fieldset>
+
     <!-- TRANSPORTE -->
     <fieldset>
       <legend>Transporte</legend>
 
-      <label for="transporte">Como você se locomove com mais frequência?</label>
-      <select name="transporte" id="transporte" placeholder="Selecione" required>
-        <option value="" disabled selected hidden>Selecione</option>
-        <option value="carro">Carro</option>
-        <option value="moto">Moto</option>
-        <option value="onibus">Ônibus</option>
-        <option value="bicicleta">Bicicleta</option>
-        <option value="a_pe">A pé</option>
-      </select>
+      <p>Como você se locomove com mais frequência?</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="transporte" value="carro" required> Carro</label>
+      <label><input type="radio" name="transporte" value="moto"> Moto</label>
+      <label><input type="radio" name="transporte" value="onibus"> Ônibus</label>
+      <label><input type="radio" name="transporte" value="bicicleta"> Bicicleta</label>
+      <label><input type="radio" name="transporte" value="a_pe"> A pé</label>
 
-      <label for="transporte_publico">Com que frequência você utiliza transporte público?</label>
-      <select name="transporte_publico" id="transporte_publico" required>
-        <option value="" disabled selected hidden>Selecione</option>
-        <option value="nunca">Nunca</option>
-        <option value="raramente">Raramente</option>
-        <option value="as_vezes">Às vezes</option>
-        <option value="sempre">Sempre</option>
-      </select>
+      <p>Com que frequência você utiliza transporte público?</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="transporte_publico" value="nunca" required> Nunca</label>
+      <label><input type="radio" name="transporte_publico" value="raramente"> Raramente</label>
+      <label><input type="radio" name="transporte_publico" value="as_vezes"> Às vezes</label>
+      <label><input type="radio" name="transporte_publico" value="sempre"> Sempre</label>
+
+      <p>Você costuma dividir transporte (carona) com outras pessoas?</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="carona" value="sempre" required> Sempre</label>
+      <label><input type="radio" name="carona" value="as_vezes"> Às vezes</label>
+      <label><input type="radio" name="carona" value="nunca"> Nunca</label>
     </fieldset>
 
     <!-- ENERGIA -->
     <fieldset>
       <legend>Energia</legend>
 
-      <label for="apagar_luzes">Você costuma apagar as luzes ao sair do cômodo?</label>
-      <select name="apagar_luzes" id="apagar_luzes" required>
-        <option value="" disabled selected hidden>Selecione</option>
-        <option value="sempre">Sempre</option>
-        <option value="as_vezes">Às vezes</option>
-        <option value="nunca">Nunca</option>
-      </select>
+      <p>Você costuma apagar as luzes ao sair do cômodo?</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="apagar_luzes" value="sempre" required> Sempre</label>
+      <label><input type="radio" name="apagar_luzes" value="as_vezes"> Às vezes</label>
+      <label><input type="radio" name="apagar_luzes" value="nunca"> Nunca</label>
 
-      <label for="lampadas">Você utiliza lâmpadas de baixo consumo energético em sua casa?</label>
-      <select name="lampadas" id="lampadas" required>
-        <option value="" disabled selected hidden>Selecione</option>
-        <option value="todos">Sim, em todos os cômodos</option>
-        <option value="alguns">Sim, em alguns cômodos</option>
-        <option value="nao_uso">Não utilizo esse tipo de lâmpada</option>
-      </select>
+      <p>Você utiliza lâmpadas de baixo consumo energético em sua casa?</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="lampadas" value="todos" required> Sim, em todos os cômodos</label>
+      <label><input type="radio" name="lampadas" value="alguns"> Sim, em alguns cômodos</label>
+      <label><input type="radio" name="lampadas" value="nao_uso"> Não utilizo esse tipo de lâmpada</label>
 
-      <label for="ar_condicionado">Quanto tempo por dia você usa ar-condicionado?</label>
-      <select name="ar_condicionado" id="ar_condicionado" required>
-        <option value="" disabled selected hidden>Selecione</option>
-        <option value="0">Não uso</option>
-        <option value="1">Até 1h</option>
-        <option value="3">De 1 a 3h</option>
-        <option value="5">Mais de 3h</option>
-      </select>
+      <p>Você utiliza eletrodomésticos com selo de eficiência energética (ex: selo Procel)?</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="selo_energia" value="sim" required> Sim</label>
+      <label><input type="radio" name="selo_energia" value="nao"> Não</label>
+      <label><input type="radio" name="selo_energia" value="nao_sei"> Não sei informar</label>
+
+      <p>Quanto tempo por dia você usa ar-condicionado?</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="ar_condicionado" value="0" required> Não uso</label>
+      <label><input type="radio" name="ar_condicionado" value="1"> Até 1h</label>
+      <label><input type="radio" name="ar_condicionado" value="3"> De 1 a 3h</label>
+      <label><input type="radio" name="ar_condicionado" value="4"> Mais de 3h</label>
+
+      <p>Você costuma usar ventilador em vez de ar-condicionado quando possível?</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="ventilador" value="sempre" required> Sempre</label>
+      <label><input type="radio" name="ventilador" value="as_vezes"> Às vezes</label>
+      <label><input type="radio" name="ventilador" value="nunca"> Nunca</label>
+
+      <p>Você costuma desligar aparelhos da tomada quando não estão em uso?</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="tirar_tomada" value="sempre" required> Sempre</label>
+      <label><input type="radio" name="tirar_tomada" value="as_vezes"> Às vezes</label>
+      <label><input type="radio" name="tirar_tomada" value="nunca"> Nunca</label>
+    </fieldset>
+
+    <!-- ÁGUA -->
+    <fieldset>
+      <legend>Água</legend>
+
+      <p>Quanto tempo, em média, você leva no banho?</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="banho" value="ate_5" required> Até 5 minutos</label>
+      <label><input type="radio" name="banho" value="5_10"> De 5 a 10 minutos</label>
+      <label><input type="radio" name="banho" value="mais_10"> Mais de 10 minutos</label>
+
+      <p>Você costuma fechar a torneira ao escovar os dentes ou ensaboar a louça?</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="fechar_torneira" value="sempre" required> Sempre</label>
+      <label><input type="radio" name="fechar_torneira" value="as_vezes"> Às vezes</label>
+      <label><input type="radio" name="fechar_torneira" value="nunca"> Nunca</label>
+
+      <p>Você reaproveita água (ex: da máquina de lavar ou da chuva) para limpeza ou plantas?</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="reuso_agua" value="sempre" required> Sempre</label>
+      <label><input type="radio" name="reuso_agua" value="as_vezes"> Às vezes</label>
+      <label><input type="radio" name="reuso_agua" value="nunca"> Nunca</label>
     </fieldset>
 
     <!-- ALIMENTAÇÃO -->
     <fieldset>
       <legend>Alimentação</legend>
 
-      <label for="carne">Com que frequência você consome carne vermelha?</label>
-      <select name="carne" id="carne" required>
-        <option value="" disabled selected hidden>Selecione</option>
-        <option value="nunca">Nunca</option>
-        <option value="raramente">Raramente</option>
-        <option value="semanal">Algumas vezes por semana</option>
-        <option value="diario">Todos os dias</option>
-      </select>
+      <p>Com que frequência você consome carne vermelha?</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="carne" value="nunca" required> Nunca</label>
+      <label><input type="radio" name="carne" value="raramente"> Raramente</label>
+      <label><input type="radio" name="carne" value="semanal"> Algumas vezes por semana</label>
+      <label><input type="radio" name="carne" value="diario"> Todos os dias</label>
+
+      <p>Com que frequência você consome alimentos industrializados ou ultraprocessados?</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="ultraprocessados" value="nunca" required> Nunca</label>
+      <label><input type="radio" name="ultraprocessados" value="raramente"> Raramente</label>
+      <label><input type="radio" name="ultraprocessados" value="semanal"> Algumas vezes por semana</label>
+      <label><input type="radio" name="ultraprocessados" value="diario"> Todos os dias</label>
+
+      <p>Você costuma dar preferência a alimentos produzidos localmente (feiras, produtores da região)?</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="alimento_local" value="sempre" required> Sempre</label>
+      <label><input type="radio" name="alimento_local" value="as_vezes"> Às vezes</label>
+      <label><input type="radio" name="alimento_local" value="nunca"> Nunca</label>
     </fieldset>
 
     <!-- CONSUMO -->
     <fieldset>
       <legend>Consumo</legend>
 
-      <label for="reciclagem">Você separa seu lixo para reciclagem?</label>
-      <select name="reciclagem" id="reciclagem" required>
-        <option value="" disabled selected hidden>Selecione</option>
-        <option value="sim">Sim</option>
-        <option value="nao">Não</option>
-      </select>
+      <p>Você costuma evitar produtos com excesso de embalagem?</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="excesso_embalagem" value="sempre" required> Sempre</label>
+      <label><input type="radio" name="excesso_embalagem" value="as_vezes"> Às vezes</label>
+      <label><input type="radio" name="excesso_embalagem" value="nunca"> Nunca</label>
 
-      <label for="produtos_verdes">Você costuma comprar produtos sustentáveis?</label>
-      <select name="produtos_verdes" id="produtos_verdes" required>
-        <option value="" disabled selected hidden>Selecione</option>
-        <option value="sempre">Sempre</option>
-        <option value="as_vezes">Às vezes</option>
-        <option value="nunca">Nunca</option>
-      </select>
+      <p>Você costuma consertar produtos antes de comprar um novo (ex: celular, eletrodoméstico)?</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="conserto" value="sempre" required> Sempre</label>
+      <label><input type="radio" name="conserto" value="as_vezes"> Às vezes</label>
+      <label><input type="radio" name="conserto" value="nunca"> Nunca</label>
+
+      <p>Você costuma evitar compras por impulso, pensando se realmente precisa do produto?</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="compra_consciente" value="sempre" required> Sempre</label>
+      <label><input type="radio" name="compra_consciente" value="as_vezes"> Às vezes</label>
+      <label><input type="radio" name="compra_consciente" value="nunca"> Nunca</label>
     </fieldset>
+
+    <!-- RESÍDUOS -->
+    <fieldset>
+      <legend>Resíduos</legend>
+
+      <p>Com que frequência você reutiliza embalagens ou objetos?</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="reutiliza" value="sempre" required> Sempre</label>
+      <label><input type="radio" name="reutiliza" value="as_vezes"> Às vezes</label>
+      <label><input type="radio" name="reutiliza" value="nunca"> Nunca</label>
+
+      <p>Você separa resíduos orgânicos dos recicláveis?</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="separar_residuos" value="sim" required> Sim</label>
+      <label><input type="radio" name="separar_residuos" value="as_vezes"> Às vezes</label>
+      <label><input type="radio" name="separar_residuos" value="nao"> Não</label>
+
+      <p>Você descarta corretamente pilhas, baterias e eletrônicos?</p> <p class="asterisco">*</p>
+      <label><input type="radio" name="lixo_eletronico" value="sempre" required> Sempre</label>
+      <label><input type="radio" name="lixo_eletronico" value="as_vezes"> Às vezes</label>
+      <label><input type="radio" name="lixo_eletronico" value="nunca"> Nunca</label>
+    </fieldset>
+
     <div class="botao-container">
         <button type="submit" class="botao-enviar">Enviar respostas</button>
         <button type="reset" class="botao-resetar">Limpar respostas</button>
