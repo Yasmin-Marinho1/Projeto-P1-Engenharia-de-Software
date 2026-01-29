@@ -12,24 +12,31 @@ app = Flask(__name__)
 # Busca a chave do ambiente, com um valor padrão caso não encontre
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-key-padrao')
 
+# Importando as blueprints
+from app.usuario_comum import user_bp
+from app.empresas import empresa_bp
+
 # Caminho para arquivos de dados
 data_dir =  'data'
 cadastro_file = os.path.join(data_dir, 'cadastro_dos_usuarios.csv')
+respostas_file = os.path.join(data_dir, 'respostas_questionario.csv')
 
-# cria o arquivo CSV se ele não existe
+# Cria a pasta data se ela não existe
 if not os.path.exists(data_dir):
     os.makedirs(data_dir)
 
-# Vai garatir o cabeçalho correto para o arquivo csv
+# Vai garatir o cabeçalho correto para ambos os arquivos csv
 if not os.path.exists(cadastro_file):
     with open(cadastro_file, mode='w', encoding='utf-8', newline='') as arquivo_csv:
         campos = ['cpf', 'nome','cnpj','nome_empresa','senha']
         escrever = csv.DictWriter(arquivo_csv, fieldnames=campos, delimiter=';')
         escrever.writeheader()
 
-# Importando as blueprints
-from app.usuario_comum import user_bp
-from app.empresas import empresa_bp
+if not os.path.exists(respostas_file):
+    with open(respostas_file, mode='w', encoding='utf-8', newline='') as arquivo_csv:
+        campos = ['data', 'idade', 'genero', 'renda', 'estado', 'emissao', 'pontuacao']
+        escrever = csv.DictWriter(arquivo_csv, fieldnames=campos, delimiter=';')
+        escrever.writeheader()
 
 # Registrando as blueprints na aplicação
 app.register_blueprint(user_bp)
@@ -37,6 +44,10 @@ app.register_blueprint(empresa_bp, url_prefix='/empresas')
 
 @app.route("/")
 def index():
+    """
+    Rota GET /index
+    Exibe a página inicial
+    """
     return render_template('index.html')
 
 @app.route("/cadastro", methods=['GET', 'POST'])
