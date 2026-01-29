@@ -382,7 +382,6 @@ td:nth-child(3) {
     font-size: 1.6rem;
     background-color: white;
     align-self: center;
-    border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     min-height: 90svh;
     padding: 40px 20px 0px;
@@ -390,9 +389,13 @@ td:nth-child(3) {
 }
 .info-empresa h3 {
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 10px;
     color: #123106;
+    padding: 10px 10px 5px;
+}
+.info-empresa p {
+    padding: 5px 10px;
 }
 /* Questionário para usuários comuns */
 .form-container {
@@ -551,11 +554,11 @@ td:nth-child(3) {
     }
     /* Página de empresas */
     .info-empresa {
-        padding: 50px 30px 160px;
-        max-width: 700px;
+        padding: 30px 30px 160px;
+        max-width: 1024px;
         min-height: 800px;
         max-height: 1000px;
-        margin: 10rem auto;
+        margin: 0 auto;
     }
     .info-empresa h3 {
         font-size: 2.8rem;
@@ -692,6 +695,7 @@ td:nth-child(3) {
         min-height: 600px;
         max-height: 1000px;
         text-align: center;
+        border-radius: 15px;
     }
     .info-empresa h3 {
         font-size: 3.5rem;
