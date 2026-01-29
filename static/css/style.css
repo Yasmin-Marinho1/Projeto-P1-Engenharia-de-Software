@@ -145,12 +145,11 @@ header h2 {
     width: 70%;
     padding: 0.75rem, 1rem;
     border-radius: 4px;
-    position: relative;
+    position: absolute;
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
-    position: fixed;
-    top: 12%;
+    top: 100px;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
@@ -607,7 +606,7 @@ td:nth-child(3) {
         width: 50px;
     }
     .logo {
-        width: 17%;
+        width: 100px;
     }
     .linha {
         width: 45px;
@@ -632,7 +631,7 @@ td:nth-child(3) {
     }
     /* Mensagem flash */
     .flash{
-        top: 15%;
+        top: 130px;
     }
     /* Página inicial */
     .info-geral {
